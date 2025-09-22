@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Axora — Luxury Tech & Education</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070709;
+  --card: rgba(255,255,255,0.04);
+  --muted:#bdbdbd;
+  --gold1:#ffcc00;
+  --gold2:#ff8800;
+  --glass-border: rgba(255,255,255,0.06);
+}
+*{box-sizing:border-box;}
+body,html{margin:0;padding:0;font-family:'Poppins',sans-serif;background:radial-gradient(1200px 600px at 10% 10%, rgba(255,200,80,0.03), transparent), linear-gradient(180deg,#040406 0%, #0b0b0f 100%);color:#fff;scroll-behavior:smooth;}
+a{text-decoration:none;color:inherit;}
+
+/* NAV */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:18px 40px;position:fixed;top:0;left:0;right:0;z-index:50;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);backdrop-filter: blur(6px);border-bottom:1px solid var(--glass-border);}
+.brand{display:flex;align-items:center;gap:14px;}
+.logo{font-weight:700;font-size:1.2rem;letter-spacing:1px;background:linear-gradient(90deg,var(--gold1),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.nav-links{display:flex;gap:18px;align-items:center;}
+.nav-links a{padding:8px 12px;border-radius:8px;color:var(--muted);font-weight:500;transition: all 0.3s ease;}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,0.05);box-shadow:0 0 15px rgba(255,200,80,0.4);}
+.cta{padding:8px 14px;border-radius:12px;background:linear-gradient(90deg,var(--gold1),var(--gold2));color:#111;font-weight:600;cursor:pointer;transition:all 0.4s ease;}
+.cta:hover{box-shadow:0 0 25px rgba(255,200,80,0.6),0 0 40px rgba(255,136,0,0.4);transform:scale(1.05);}
+
+/* HERO */
+.hero{min-height:80vh;display:flex;align-items:center;justify-content:center;padding:120px 30px 60px;position:relative;}
+.hero-inner{text-align:center;max-width:1100px;}
+.title{font-size:4rem;margin:0;line-height:1;transition:all 0.4s ease;}
+.title.glow{background:linear-gradient(90deg,var(--gold1),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 6px 30px rgba(255,150,0,0.15);}
+.title.glow:hover{text-shadow:0 0 50px rgba(255,200,80,0.8),0 0 80px rgba(255,136,0,0.6);}
+.subtitle{margin-top:12px;font-size:1.15rem;color:var(--muted);}
+.cofound{margin-top:18px;font-size:1rem;color:#e7d8a3;}
+.tag{margin-top:14px;font-style:italic;color:var(--gold1);}
+.hero-ctas{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-top:26px;}
+
+/* Luxury Buttons with hover shimmer */
+.lux-btn{
+  padding: 14px 28px;
+  font-size:1.1rem;
+  font-weight:700;
+  border-radius:12px;
+  border:2px solid rgba(255,255,255,0.1);
+  background: linear-gradient(145deg, rgba(255,200,80,0.2), rgba(255,120,0,0.2));
+  color:#fff;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  transition: all 0.5s ease;
+  backdrop-filter: blur(6px);
+  box-shadow:0 8px 20px rgba(255,200,80,0.3), 0 0 10px rgba(255,120,0,0.2);
+}
+.lux-btn::before{
+  content:"";
+  position:absolute;
+  top:-50%; left:-50%;
+  width:200%; height:200%;
+  background: linear-gradient(60deg,#ffcc00,#ff8800,#ffcc00,#ff8800);
+  background-size:400% 400%;
+  z-index:0;
+  filter:blur(25px);
+  opacity:0.4;
+  transition:all 0.6s ease;
+  animation: moveGradient 6s linear infinite;
+}
+.lux-btn:hover::before{opacity:0.8;filter:blur(35px);}
+.lux-btn span{position:relative;z-index:1;}
+.lux-btn.primary{background:linear-gradient(90deg,#ffcc00,#ff8800);color:#111;border:none;box-shadow:0 8px 25px rgba(255,200,80,0.5);}
+.lux-btn.shopping{background:linear-gradient(135deg,#ff88aa,#ffcc00);color:#111;border:none;box-shadow:0 8px 25px rgba(255,136,170,0.5);}
+@keyframes moveGradient{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+
+/* SECTIONS */
+.container{max-width:1100px;margin:40px auto;padding:0 20px;}
+h2.section-title{font-size:1.35rem;margin:0 0 18px 0;color:var(--gold1);}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.card{background:var(--card);border:1px solid var(--glass-border);padding:18px;border-radius:14px;transition:all 0.4s ease;position:relative;}
+.card:hover{box-shadow:0 0 25px rgba(255,200,80,0.3),0 0 45px rgba(255,136,0,0.2);transform:scale(1.03);}
+.muted{color:var(--muted);}
+
+/* EDUCATION SUB BUTTONS */
+.edu-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
+.chip{padding:8px 12px;border-radius:999px;background:transparent;border:1px solid rgba(255,255,255,0.03);cursor:pointer;transition:all 0.4s ease;}
+.chip.active{background:linear-gradient(90deg,var(--gold1),var(--gold2));color:#111;border:none;box-shadow:0 0 25px rgba(255,200,80,0.4);}
+.edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;}
+.note{display:flex;flex-direction:column;gap:8px;}
+.download{display:inline-block;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.03);border:1px solid var(--glass-border);font-weight:600;transition:all 0.3s ease;}
+.download:hover{background:rgba(255,255,255,0.05);box-shadow:0 0 15px rgba(255,200,80,0.3);}
+
+/* NEWS / TICKER */
+.ticker{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:12px;border-radius:10px;border:1px solid var(--glass-border);display:flex;gap:12px;align-items:center;}
+.news-list{display:flex;flex-direction:column;gap:12px;}
+
+/* FOOTER */
+footer{padding:28px 20px;margin-top:40px;text-align:center;color:var(--muted);}
+footer .lux-btn{margin-top:6px;}
+
+/* RESPONSIVE */
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.title{font-size:2.8rem}.nav{padding:12px 20px}}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.hero{padding-top:100px}.title{font-size:2rem}.nav-links{display:none}}
+
+/* FLOATING DECORATION */
+.floating{position:absolute;right:-60px;top:40%;width:300px;height:300px;background:radial-gradient(circle at 20% 20%, rgba(255,200,80,0.06), transparent), linear-gradient(45deg, rgba(255,120,0,0.02), transparent);filter:blur(30px);transform:rotate(20deg);pointer-events:none;}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="brand">
+    <div class="logo">Axora</div>
+    <div class="muted">Innovation Studio</div>
+  </div>
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#education" onclick="showSection('education')">PUC Education</a>
+    <a href="#technology" onclick="showSection('technology')">Technology</a>
+    <a href="#news" onclick="showSection('news')">News</a>
+    <a class="cta" href="#premium" onclick="showSection('premium')">Premium</a>
+  </div>
+</div>
+
+<main>
+<section id="home" class="hero">
+  <div class="floating"></div>
+  <div class="hero-inner">
+    <h1 class="title glow">Axora</h1>
+    <div class="subtitle">New Games • New Apps • New Software • New Innovation</div>
+    <div class="cofound">Co-Founder & Owner: <strong>Aditya Patil</strong></div>
+    <div class="tag">A Tech Company for the Future</div>
+    <div class="hero-ctas">
+      <button class="lux-btn" onclick="showSection('education')"><span>Explore Education</span></button>
+      <button class="lux-btn" onclick="showSection('technology')"><span>Explore Technology</span></button>
+      <button class="lux-btn primary" onclick="showSection('news')"><span>Latest News</span></button>
+      <button class="lux-btn shopping" onclick="window.open('https://www.flipkart.com/search?q=boys+girls+trending+outfit','_blank')"><span>Online Shopping</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- Sections for Education, Technology, News, Premium go here (same as before, with lux-btn where needed) -->
+
+<footer>
+<div style="max-width:900px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+  <div><strong>Axora</strong> • New Games • New Apps • New Software • New Innovation</div>
+  <div>
+    <form onsubmit="event.preventDefault();alert('Subscribed: '+this.email.value);this.reset();">
+      <input name="email" type="email" placeholder="apatil75135@gmail.com" required style="padding:8px;border-radius:8px;border:1px solid var(--glass-border);background:transparent;color:#fff;margin-right:8px">
+      <button class="lux-btn" style="padding:9px 12px"><span>Subscribe</span></button>
+    </form>
+  </div>
+</div>
+<div style="margin-top:18px;color:var(--muted)">© <span id="year"></span> Axora — Made with ❤️ by Aditya Patil</div>
+</footer>
+
+<script>
+document.getElementById('year').innerText = new Date().getFullYear();
+function hideAllSections(){['home','education','technology','news','premium'].forEach(id=>{const el=document.getElementById(id);if(el) el.style.display=(id==='home')?'flex':'none';});window.scrollTo({top:0,behavior:'smooth'});}
+function showSection(id){hideAllSections();const el=document.getElementById(id);if(el) el.style.display=(id==='home')?'flex':'block';}
+function selectEdu(key){document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active',c.dataset.key===key));document.querySelectorAll('[data-edu]').forEach(el=>{el.style.display=(el.dataset.edu===key)?'grid':'none';});window.scrollTo({top:120,behavior:'smooth'});}
+const tickerItems=['AI model update — New features released.','New app: StudyBuddy launched for PUC students.','Gadget: Budget phone review — best in class.','Startup: Local hackathon winners announced.'];let tIndex=0;setInterval(()=>{tIndex=(tIndex+1)%tickerItems.length;const t=document.getElementById('tickerText');if(t) t.innerText=tickerItems[tIndex];},4500);
+window.addEventListener('load',()=>{const hash=location.hash.replace('#','');if(hash&&document.getElementById(hash)) showSection(hash);});
+</script>
+</body>
+</html>
