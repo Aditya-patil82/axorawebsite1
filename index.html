@@ -37,13 +37,15 @@ a{text-decoration:none;color:inherit;}
 .subtitle{margin-top:12px;font-size:1.15rem;color:var(--muted);}
 .cofound{margin-top:18px;font-size:1rem;color:#e7d8a3;}
 .tag{margin-top:14px;font-style:italic;color:var(--gold1);}
-.hero-ctas{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-top:26px;}
+.hero-ctas{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-top:26px;position:relative;}
 
 /* Luxury Buttons */
 .lux-btn{padding:14px 28px;font-size:1.1rem;font-weight:700;border-radius:12px;border:2px solid rgba(255,255,255,0.1);background:linear-gradient(145deg, rgba(255,200,80,0.2), rgba(255,120,0,0.2));color:#fff;cursor:pointer;position:relative;overflow:hidden;transition:all 0.5s ease;backdrop-filter: blur(6px);box-shadow:0 8px 20px rgba(255,200,80,0.3),0 0 10px rgba(255,120,0,0.2);}
 .lux-btn span{position:relative;z-index:1;}
 .lux-btn.primary{background:linear-gradient(90deg,#ffcc00,#ff8800);color:#111;border:none;box-shadow:0 8px 25px rgba(255,200,80,0.5);}
-.lux-btn.shopping{background:linear-gradient(135deg,#ff88aa,#ffcc00);color:#111;border:none;box-shadow:0 8px 25px rgba(255,136,170,0.5);}
+
+/* Dropdown for PYQP */
+#pyqpDropdown button{display:block;width:100%;margin-bottom:6px;}
 
 /* SECTIONS */
 .container{max-width:1100px;margin:40px auto;padding:0 20px;}
@@ -92,25 +94,28 @@ footer .lux-btn{margin-top:6px;}
     <!-- HERO CTAs -->
     <div class="hero-ctas">
       <button class="lux-btn" onclick="window.open('https://yourmidtermlink.com','_blank')"><span>Midterm Imp Concepts for Science and Commerce</span></button>
-      <button class="lux-btn primary" onclick="window.open('https://yourpreviousyearlink.com','_blank')"><span>Previous Year Question Paper</span></button>
-      <button class="lux-btn" onclick="window.open('https://youronlinetestlink.com','_blank')"><span>Online Test</span></button>
+
+      <!-- Dropdown for Previous Year Question Papers -->
+      <div style="position:relative;">
+        <button class="lux-btn primary" onclick="togglePYQP()">
+          <span>Previous Year Question Paper</span>
+        </button>
+        <div id="pyqpDropdown" style="display:none;position:absolute;top:50px;left:0;background:rgba(0,0,0,0.9);padding:10px;border-radius:10px;z-index:100;">
+          <button class="lux-btn" onclick="openPDF('https://yourwebsite.com/1stPUScience.pdf')">1st PUC Science</button>
+          <button class="lux-btn" onclick="openPDF('https://yourwebsite.com/2ndPUScience.pdf')">2nd PUC Science</button>
+          <button class="lux-btn" onclick="openPDF('https://yourwebsite.com/1stPUCommerce.pdf')">1st PUC Commerce</button>
+          <button class="lux-btn" onclick="openPDF('https://yourwebsite.com/2ndPUCommerce.pdf')">2nd PUC Commerce</button>
+        </div>
+      </div>
+
+      <button class="lux-btn" onclick="window.open('https://youronlinetestlink.com','_blank')">
+        <span>Online Test</span>
+      </button>
     </div>
   </div>
 </section>
 
-<!-- News Section -->
-<section id="news" class="container">
-  <h2 class="section-title">Latest News</h2>
-  <div class="ticker">
-    <strong>Breaking:</strong> <span id="tickerText">AI model update — New features released.</span>
-  </div>
-  <div class="news-list">
-    <div class="card"><h3>🚀 New App Launch</h3><p>StudyBuddy app for PUC students is now live.</p></div>
-    <div class="card"><h3>📱 Tech Review</h3><p>Budget phone review — best in class performance.</p></div>
-    <div class="card"><h3>🏆 Startup News</h3><p>Winners announced at the 2025 Local Hackathon.</p></div>
-  </div>
-</section>
-</main>
+
 
 <footer>
   <div style="max-width:900px;margin:0 auto;padding:0 20px;">
@@ -125,9 +130,21 @@ footer .lux-btn{margin-top:6px;}
 
 <script>
 document.getElementById('year').innerText = new Date().getFullYear();
+
+// Ticker news
 const tickerItems=['AI model update — New features released.','New app: StudyBuddy launched for PUC students.','Gadget: Budget phone review — best in class.','Startup: Local hackathon winners announced.'];
 let tIndex=0;
 setInterval(()=>{tIndex=(tIndex+1)%tickerItems.length;document.getElementById('tickerText').innerText=tickerItems[tIndex];},4000);
+
+// Previous Year Question Paper dropdown
+function togglePYQP() {
+  const dropdown = document.getElementById('pyqpDropdown');
+  dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+}
+
+function openPDF(link) {
+  window.open(link, '_blank');
+}
 </script>
 
 </body>
